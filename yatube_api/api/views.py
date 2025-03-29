@@ -98,7 +98,7 @@ class CommentViewSet(BaseViewSet):
                             status=status.HTTP_200_OK)
         except Comment.DoesNotExist:
             return Response(
-                {"detail": "Комментарий не найден"},
+           {"detail": "Комментарий не найден"},
                 status=status.HTTP_404_NOT_FOUND)
 
     def partial_update(self, request, *args, **kwargs):
@@ -108,8 +108,8 @@ class CommentViewSet(BaseViewSet):
             if instance.author != request.user:
                 return Response(
                     {
-                "detail":
-                    "У вас недостаточно прав для редактирования комментария"},
+            "detail":
+                "У вас недостаточно прав для редактирования комментария"},
             status=status.HTTP_403_FORBIDDEN
                 )
 
@@ -125,7 +125,7 @@ class CommentViewSet(BaseViewSet):
 
         except Http404:
             return Response(
-                {"detail": "Комментарий не найден"},
+           {"detail": "Комментарий не найден"},
                 status=status.HTTP_404_NOT_FOUND
             )
 
@@ -134,16 +134,15 @@ class CommentViewSet(BaseViewSet):
             instance = self.get_object()
             if instance.author != request.user:
                 return Response(
-                    {
-                        "detail": "У вас недостаточно прав для выполнения данного действия."},
-                    status=status.HTTP_403_FORBIDDEN
+                {"detail": "У вас недостаточно прав для выполнения данного действия."},
+                      status=status.HTTP_403_FORBIDDEN
                 )
             self.perform_destroy(instance)
             return Response(status=status.HTTP_204_NO_CONTENT)
         except Http404:
             return Response(
-                {"detail": "Комментарий не найден"},
-                status=status.HTTP_404_NOT_FOUND
+        {"detail": "Комментарий не найден"},
+              status=status.HTTP_404_NOT_FOUND
             )
 
 
