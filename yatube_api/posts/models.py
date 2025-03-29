@@ -40,6 +40,7 @@ class Comment(models.Model):
         'Дата добавления',
         auto_now_add=True, db_index=True)
 
+
 class Follow(models.Model):
     user = models.ForeignKey(
         User,
