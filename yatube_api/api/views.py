@@ -157,9 +157,9 @@ class FollowViewSet(viewsets.ModelViewSet):
         if not self.request.user.is_authenticated:
             return Response(
 
-                {"detail":
-                     "У вас недостаточно прав для выполнения данного действия."},
-                status=status.HTTP_401_UNAUTHORIZED
+        {"detail":
+             "У вас недостаточно прав для выполнения данного действия."},
+              status=status.HTTP_401_UNAUTHORIZED
             )
 
         queryset = Follow.objects.filter(user=self.request.user)
