@@ -30,8 +30,8 @@ class PostViewSet(BaseViewSet):
 
         if instance.author != request.user:
             return Response(
-{"detail": "У вас недостаточно прав для выполнения данного действия."},
-                status=status.HTTP_403_FORBIDDEN
+        {"detail": "У вас недостаточно прав для выполнения данного действия."},
+              status=status.HTTP_403_FORBIDDEN
             )
 
         self.perform_destroy(instance)
@@ -55,8 +55,8 @@ class PostViewSet(BaseViewSet):
         instance = self.get_object()
         if instance.author != request.user:
             return Response(
-        {"detail": 'У вас недостаточно прав для выполнения данного действия.'},
-                            status=status.HTTP_403_FORBIDDEN)
+                {"detail": 'У вас недостаточно прав для выполнения данного действия.'},
+                status=status.HTTP_403_FORBIDDEN)
         else:
             serializer = self.get_serializer(instance, data=request.data)
             serializer.is_valid(raise_exception=True)
@@ -107,8 +107,8 @@ class CommentViewSet(BaseViewSet):
 
             if instance.author != request.user:
                 return Response(
-            {
-            "detail": "У вас недостаточно прав для редактирования комментария"},
+                    {
+                        "detail": "У вас недостаточно прав для редактирования комментария"},
                     status=status.HTTP_403_FORBIDDEN
                 )
 
@@ -134,8 +134,8 @@ class CommentViewSet(BaseViewSet):
             if instance.author != request.user:
                 return Response(
                     {
-        "detail": "У вас недостаточно прав для выполнения данного действия."},
-                status=status.HTTP_403_FORBIDDEN
+                        "detail": "У вас недостаточно прав для выполнения данного действия."},
+                    status=status.HTTP_403_FORBIDDEN
                 )
             self.perform_destroy(instance)
             return Response(status=status.HTTP_204_NO_CONTENT)
@@ -156,8 +156,8 @@ class FollowViewSet(viewsets.ModelViewSet):
         if not self.request.user.is_authenticated:
             return Response(
 
-            {"detail":
-                "У вас недостаточно прав для выполнения данного действия."},
+                {"detail":
+                     "У вас недостаточно прав для выполнения данного действия."},
                 status=status.HTTP_401_UNAUTHORIZED
             )
 
