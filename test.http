@@ -1,0 +1,27 @@
+### GET request to example server
+GET https://examples.http-client.intellij.net/get
+    ?generated-in=PyCharm
+
+###
+
+
+GET localhost:8888/api/v1/posts/
+
+#######
+
+GET localhost:8888/api/v1/posts/2
+
+#######
+
+POST http://127.0.0.1:8888/api/v1/posts/
+Content-Type: application/json
+
+{
+    "text": "Abracadabra",
+    "image": "string",
+    "group": 0
+}
+
+#################
+
+DELETE localhost:8888/api/v1/posts/1/
