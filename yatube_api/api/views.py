@@ -30,9 +30,10 @@ class PostViewSet(BaseViewSet):
 
         if instance.author != request.user:
             return Response(
-        {"detail": "У вас недостаточно прав для выполнения данного действия."},
-        status=status.HTTP_403_FORBIDDEN
-            )
+                {"detail": "У вас недостаточно"
+                           " прав для выполнения "
+                           "данного"
+                           " действия."}, status=status.HTTP_403_FORBIDDEN)
 
         self.perform_destroy(instance)
         return Response(status=status.HTTP_204_NO_CONTENT)
@@ -55,8 +56,10 @@ class PostViewSet(BaseViewSet):
         instance = self.get_object()
         if instance.author != request.user:
             return Response(
-        {"detail": 'У вас недостаточно прав для выполнения данного действия.'},
-        status=status.HTTP_403_FORBIDDEN)
+                {"detail": 'У вас недостаточно'
+                           ' прав для выполнения '
+                           'данного '
+                           'действия.'}, status=status.HTTP_403_FORBIDDEN)
         else:
             serializer = self.get_serializer(instance, data=request.data)
             serializer.is_valid(raise_exception=True)
@@ -97,9 +100,12 @@ class CommentViewSet(BaseViewSet):
             return Response(serializer.data,
                             status=status.HTTP_200_OK)
         except Comment.DoesNotExist:
-            return Response(
-           {"detail": "Комментарий не найден"},
-                status=status.HTTP_404_NOT_FOUND)
+            return Response({"detail": "Ком"
+                                       "мен"
+                                       "тар"
+                                       "ий не на"
+                                       "йд"
+                                       "ен"}, status=status.HTTP_404_NOT_FOUND)
 
     def partial_update(self, request, *args, **kwargs):
         try:
@@ -107,11 +113,10 @@ class CommentViewSet(BaseViewSet):
 
             if instance.author != request.user:
                 return Response(
-                    {
-            "detail":
-                "У вас недостаточно прав для редактирования комментария"},
-            status=status.HTTP_403_FORBIDDEN
-                )
+                    {"detail": "У вас"
+                               " недостаточно"
+                               " прав для редактирования ком"
+                               "ментария"}, status=status.HTTP_403_FORBIDDEN)
 
             serializer = self.get_serializer(
                 instance,
@@ -124,26 +129,28 @@ class CommentViewSet(BaseViewSet):
             return Response(serializer.data, status=status.HTTP_200_OK)
 
         except Http404:
-            return Response(
-           {"detail": "Комментарий не найден"},
-                status=status.HTTP_404_NOT_FOUND
-            )
+            return Response({"detail": "Коммент"
+                                       "арий не н"
+                                       "айд"
+                                       "ен"}, status=status.HTTP_404_NOT_FOUND)
 
     def destroy(self, request, *args, **kwargs):
         try:
             instance = self.get_object()
             if instance.author != request.user:
-                return Response(
-                {"detail": "У вас недостаточно прав для выполнения данного действия."},
-                      status=status.HTTP_403_FORBIDDEN
-                )
+                return Response({"detail": "У вас недостаточно п"
+                                           "рав для выпол"
+                                           "нения данного де"
+                                           "йств"
+                                           "ия"
+                                           "."},
+                                status=status.HTTP_403_FORBIDDEN)
             self.perform_destroy(instance)
             return Response(status=status.HTTP_204_NO_CONTENT)
         except Http404:
-            return Response(
-        {"detail": "Комментарий не найден"},
-              status=status.HTTP_404_NOT_FOUND
-            )
+            return Response({"detail": "Комме"
+                                       "нтарий не найден"
+                                       ""}, status=status.HTTP_404_NOT_FOUND)
 
 
 class FollowViewSet(viewsets.ModelViewSet):
@@ -154,12 +161,12 @@ class FollowViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         if not self.request.user.is_authenticated:
-            return Response(
-
-        {"detail":
-             "У вас недостаточно прав для выполнения данного действия."},
-              status=status.HTTP_401_UNAUTHORIZED
-            )
+            return Response({"detail": "У вас н"
+                                       "едостаточно пр"
+                                       "ав для выполнения дан"
+                                       "ного действия"
+                                       "."},
+                            status=status.HTTP_401_UNAUTHORIZED)
 
         queryset = Follow.objects.filter(user=self.request.user)
 
