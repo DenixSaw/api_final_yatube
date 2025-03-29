@@ -13,14 +13,12 @@ urlpatterns = [
     path('v1/posts/<int:post_id>/comments/',
          CommentViewSet.as_view({
              'get': 'list',
-             'post': 'create'}),
-         name='comments-list'),
+             'post': 'create'}), name='comments-list'),
     path('v1/posts/<int:post_id>/comments/<int:pk>/',
          CommentViewSet.as_view({
              'get': 'retrieve',
              'put': 'update',
              'patch': 'partial_update',
              'delete': 'destroy'
-         }),
-              name='comments-detail'),
+         }), name='comments-detail'),
 ]
