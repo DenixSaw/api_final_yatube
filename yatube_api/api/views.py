@@ -31,7 +31,7 @@ class PostViewSet(BaseViewSet):
         if instance.author != request.user:
             return Response(
         {"detail": "У вас недостаточно прав для выполнения данного действия."},
-              status=status.HTTP_403_FORBIDDEN
+        status=status.HTTP_403_FORBIDDEN
             )
 
         self.perform_destroy(instance)
@@ -55,8 +55,8 @@ class PostViewSet(BaseViewSet):
         instance = self.get_object()
         if instance.author != request.user:
             return Response(
-                {"detail": 'У вас недостаточно прав для выполнения данного действия.'},
-                status=status.HTTP_403_FORBIDDEN)
+        {"detail": 'У вас недостаточно прав для выполнения данного действия.'},
+        status=status.HTTP_403_FORBIDDEN)
         else:
             serializer = self.get_serializer(instance, data=request.data)
             serializer.is_valid(raise_exception=True)
@@ -108,8 +108,9 @@ class CommentViewSet(BaseViewSet):
             if instance.author != request.user:
                 return Response(
                     {
-                        "detail": "У вас недостаточно прав для редактирования комментария"},
-                    status=status.HTTP_403_FORBIDDEN
+                "detail":
+                    "У вас недостаточно прав для редактирования комментария"},
+            status=status.HTTP_403_FORBIDDEN
                 )
 
             serializer = self.get_serializer(
