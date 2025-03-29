@@ -2,7 +2,10 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import TemplateView
-from rest_framework_simplejwt.views import TokenVerifyView, TokenRefreshView, TokenObtainPairView
+from rest_framework_simplejwt.views import (
+  TokenVerifyView,
+  TokenRefreshView,
+  TokenObtainPairView)
 
 from yatube_api import settings
 
@@ -15,10 +18,10 @@ urlpatterns = [
         name='redoc'
     ),
     path('api/v1/jwt/create/', TokenObtainPairView.as_view(),
-                       name='jwt-create'),
+          name='jwt-create'),
     path('api/v1/jwt/refresh/', TokenRefreshView.as_view(),
-                       name='jwt-refresh'),
+          name='jwt-refresh'),
     path('api/v1/jwt/verify/', TokenVerifyView.as_view(),
-                       name='jwt-verify'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
+          name='jwt-verify'),
+] + static(settings.MEDIA_URL,
+           document_root=settings.MEDIA_ROOT)
